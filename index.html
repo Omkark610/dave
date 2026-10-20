@@ -784,6 +784,175 @@
       margin-top: 2px;
     }
 
+    /* FORTNITE-STYLE UI UPGRADES: Slanted Bars, Weapon Loadout, Storm Radar & Floating Damage Numbers */
+    .hud-card {
+      background: linear-gradient(135deg, rgba(13, 22, 48, 0.88) 0%, rgba(24, 14, 56, 0.88) 100%);
+      border: 2px solid rgba(56, 189, 248, 0.45);
+      transform: skewX(-6deg);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55);
+    }
+    .bar-track {
+      height: 14px;
+      border-radius: 4px;
+      background: rgba(9, 13, 28, 0.85);
+      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      transform: skewX(-12deg);
+    }
+    .bar-fill {
+      border-radius: 2px;
+    }
+    #health-fill {
+      background: linear-gradient(90deg, #16a34a, #22e58b, #86efac);
+      box-shadow: 0 0 10px rgba(34, 229, 139, 0.6);
+    }
+    #ammo-fill {
+      background: linear-gradient(90deg, #0284c7, #00e5ff, #bae6fd);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+    }
+    .btn-primary {
+      background: linear-gradient(180deg, #fde047 0%, #facc15 55%, #eab308 100%);
+      color: #0f172a;
+      border: 2px solid #ffffff;
+      transform: skewX(-8deg);
+      box-shadow: 0 6px 0 #a16207, 0 10px 24px rgba(250, 204, 21, 0.45);
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .btn-primary:hover {
+      transform: skewX(-8deg) translateY(-2px);
+      filter: brightness(1.08);
+    }
+    .btn-secondary {
+      background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+      border: 2px solid #60a5fa;
+      transform: skewX(-8deg);
+      box-shadow: 0 4px 0 #1e3a8a;
+      font-weight: 800;
+    }
+
+    /* Fortnite Bottom-Center Weapon Hotbar (5 Rarity Slots) */
+    #fn-hotbar {
+      position: absolute;
+      bottom: calc(var(--safe-bottom) + 34px);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      pointer-events: none;
+    }
+    .fn-slot {
+      width: 52px;
+      height: 52px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-bottom-width: 5px;
+      border-radius: 8px;
+      transform: skewX(-8deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      position: relative;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
+    }
+    .fn-slot.active-slot {
+      transform: skewX(-8deg) translateY(-5px) scale(1.06);
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.65);
+    }
+    .fn-slot.rarity-gold {
+      border-color: #facc15;
+      background: linear-gradient(180deg, rgba(161, 98, 7, 0.45) 0%, rgba(250, 204, 21, 0.82) 100%);
+    }
+    .fn-slot.rarity-epic {
+      border-color: #c084fc;
+      background: linear-gradient(180deg, rgba(88, 28, 135, 0.45) 0%, rgba(168, 85, 247, 0.78) 100%);
+    }
+    .fn-slot.rarity-rare {
+      border-color: #38bdf8;
+      background: linear-gradient(180deg, rgba(12, 74, 110, 0.45) 0%, rgba(14, 165, 233, 0.78) 100%);
+    }
+    .fn-slot.rarity-uncommon {
+      border-color: #4ade80;
+      background: linear-gradient(180deg, rgba(20, 83, 45, 0.45) 0%, rgba(34, 197, 94, 0.78) 100%);
+    }
+    .fn-slot span {
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 1px 2px #000;
+      margin-top: 2px;
+    }
+
+    /* Fortnite Top-Right Storm Radar Minimap */
+    #fn-minimap-wrap {
+      position: absolute;
+      top: calc(var(--safe-top) + 62px);
+      right: calc(var(--safe-right) + 12px);
+      width: 112px;
+      height: 112px;
+      background: rgba(10, 18, 38, 0.86);
+      border: 2.5px solid #38bdf8;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 0 18px rgba(168, 85, 247, 0.45);
+    }
+    #fn-minimap-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .minimap-label {
+      position: absolute;
+      bottom: 3px;
+      left: 6px;
+      font-size: 9px;
+      font-weight: 900;
+      color: #e0f2fe;
+      letter-spacing: 0.6px;
+      text-shadow: 0 1px 3px #000;
+    }
+
+    /* Floating Fortnite Damage Numbers Container */
+    #damage-numbers-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .dmg-pop {
+      position: absolute;
+      font-size: 22px;
+      font-weight: 900;
+      font-style: italic;
+      color: #fde047;
+      text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, 0 4px 10px rgba(0,0,0,0.8);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: fnDmgFloat 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .dmg-pop.crit {
+      font-size: 27px;
+      color: #38bdf8;
+    }
+    @keyframes fnDmgFloat {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.6); }
+      25% { opacity: 1; transform: translate(-50%, -95%) scale(1.25); }
+      100% { opacity: 0; transform: translate(-50%, -165%) scale(0.9); }
+    }
+
+    @media (max-width: 768px) {
+      #fn-hotbar {
+        transform: translateX(-50%) scale(0.8);
+        bottom: calc(var(--safe-bottom) + 8px);
+      }
+      #fn-minimap-wrap {
+        width: 86px;
+        height: 86px;
+      }
+    }
+
     /* Error Fallback Box */
     #webgl-error {
       display: none;
@@ -891,6 +1060,23 @@
       <div class="boss-track">
         <div id="boss-health-fill"></div>
       </div>
+    </div>
+
+    <!-- Fortnite Floating Damage Numbers Layer -->
+    <div id="damage-numbers-layer"></div>
+
+    <!-- Fortnite Top-Right Storm Radar Minimap -->
+    <div id="fn-minimap-wrap">
+      <canvas id="fn-minimap-canvas" width="112" height="112"></canvas>
+      <div class="minimap-label">STORM EYE</div>
+    </div>
+
+    <!-- Fortnite Bottom Loadout Hotbar -->
+    <div id="fn-hotbar">
+      <div class="fn-slot rarity-epic">⛏<span>PICKAXE</span></div>
+      <div class="fn-slot rarity-gold active-slot">🔫<span>SCAR-PLASMA</span></div>
+      <div class="fn-slot rarity-rare">🧪<span>SLURP</span></div>
+      <div class="fn-slot rarity-uncommon">🧱<span>MATS 999</span></div>
     </div>
 
     <!-- Center Crosshair -->
@@ -2042,6 +2228,194 @@
       }
     }
 
+        /* =========================================================================
+       6B. REALISTIC PBR TEXTURE & MATERIAL GENERATOR (Procedural Canvas Maps)
+       ========================================================================= */
+    class RealisticAssetFactory {
+      static init() {
+        if (this.initialized) return;
+        this.initialized = true;
+        this.textures = {
+          stone: this.createStoneTexture("#8c7a6b", "#5c4d42", "#3d312a"),
+          sandstone: this.createStoneTexture("#c2874b", "#96612d", "#633d18"),
+          cavernRock: this.createStoneTexture("#43355e", "#291f3d", "#171124"),
+          dungeonBrick: this.createStoneTexture("#284b4a", "#173030", "#0c1c1c"),
+          fortressStone: this.createStoneTexture("#591d2b", "#380f19", "#21070d"),
+          templeObsidian: this.createStoneTexture("#2d1942", "#1a0d29", "#4a2c6b"),
+          metal: this.createMetalTexture("#7a889b", "#475569"),
+          darkMetal: this.createMetalTexture("#334155", "#1e293b"),
+          gold: this.createMetalTexture("#ffd166", "#b5830d"),
+          denim: this.createFabricTexture("#1e40af", "#172554"),
+          vestLeather: this.createFabricTexture("#1f2937", "#111827"),
+          wood: this.createWoodTexture("#854d0e", "#451a03"),
+          lava: this.createLavaTexture("#ff4500", "#ffbe0b", "#4a0404"),
+          acid: this.createLavaTexture("#10b981", "#a7f3d0", "#064e3b"),
+          voidLava: this.createLavaTexture("#9d4edd", "#e0aaff", "#240046"),
+          fnGrass: this.createStoneTexture("#22c55e", "#16a34a", "#15803d")
+        };
+      }
+
+      static createStoneTexture(baseHex, midHex, darkHex) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 256;
+        canvas.height = 256;
+        const ctx = canvas.getContext("2d");
+
+        ctx.fillStyle = baseHex;
+        ctx.fillRect(0, 0, 256, 256);
+
+        // Procedural stone grain & weathering
+        for (let i = 0; i < 2400; i++) {
+          const x = Math.random() * 256;
+          const y = Math.random() * 256;
+          const r = 1 + Math.random() * 3.5;
+          ctx.fillStyle = Math.random() > 0.5 ? midHex : darkHex;
+          ctx.globalAlpha = 0.12 + Math.random() * 0.22;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Subtle ashlar masonry courses & cracks
+        ctx.globalAlpha = 0.48;
+        ctx.strokeStyle = darkHex;
+        ctx.lineWidth = 3;
+        const rows = 4;
+        const rowH = 256 / rows;
+        for (let r = 0; r < rows; r++) {
+          const y = r * rowH;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(256, y);
+          ctx.stroke();
+
+          const cols = 2;
+          const offset = (r % 2) * 64;
+          for (let c = 0; c < cols; c++) {
+            const x = (c * 128 + offset) % 256;
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y + rowH);
+            ctx.stroke();
+          }
+        }
+
+        // Bevel highlights
+        ctx.globalAlpha = 0.2;
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 1.5;
+        for (let r = 0; r < rows; r++) {
+          ctx.beginPath();
+          ctx.moveTo(0, r * rowH + 2);
+          ctx.lineTo(256, r * rowH + 2);
+          ctx.stroke();
+        }
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = THREE.RepeatWrapping;
+        tex.wrapT = THREE.RepeatWrapping;
+        return tex;
+      }
+
+      static createMetalTexture(lightHex, darkHex) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 128;
+        canvas.height = 128;
+        const ctx = canvas.getContext("2d");
+        const grad = ctx.createLinearGradient(0, 0, 128, 128);
+        grad.addColorStop(0, lightHex);
+        grad.addColorStop(0.5, darkHex);
+        grad.addColorStop(1, lightHex);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 128, 128);
+
+        // Brushed anisotropic streaks & rivets
+        ctx.strokeStyle = "#ffffff";
+        for (let i = 0; i < 180; i++) {
+          ctx.globalAlpha = 0.04 + Math.random() * 0.08;
+          const y = Math.random() * 128;
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(128, y + (Math.random() - 0.5) * 4);
+          ctx.stroke();
+        }
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = THREE.RepeatWrapping;
+        tex.wrapT = THREE.RepeatWrapping;
+        return tex;
+      }
+
+      static createFabricTexture(c1, c2) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 64;
+        canvas.height = 64;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = c1;
+        ctx.fillRect(0, 0, 64, 64);
+        ctx.fillStyle = c2;
+        for (let y = 0; y < 64; y += 2) {
+          for (let x = (y % 4 === 0 ? 0 : 1); x < 64; x += 2) {
+            ctx.globalAlpha = 0.25;
+            ctx.fillRect(x, y, 1, 1);
+          }
+        }
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = THREE.RepeatWrapping;
+        tex.wrapT = THREE.RepeatWrapping;
+        return tex;
+      }
+
+      static createWoodTexture(c1, c2) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 128;
+        canvas.height = 128;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = c1;
+        ctx.fillRect(0, 0, 128, 128);
+        ctx.strokeStyle = c2;
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 40; i++) {
+          ctx.globalAlpha = 0.2 + Math.random() * 0.25;
+          const x = (i / 40) * 128;
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.bezierCurveTo(x + 6, 42, x - 6, 84, x, 128);
+          ctx.stroke();
+        }
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = THREE.RepeatWrapping;
+        tex.wrapT = THREE.RepeatWrapping;
+        return tex;
+      }
+
+      static createLavaTexture(hotHex, coreHex, crustHex) {
+        const canvas = document.createElement("canvas");
+        canvas.width = 256;
+        canvas.height = 256;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = crustHex;
+        ctx.fillRect(0, 0, 256, 256);
+
+        for (let i = 0; i < 70; i++) {
+          const x = Math.random() * 256;
+          const y = Math.random() * 256;
+          const r = 12 + Math.random() * 28;
+          const g = ctx.createRadialGradient(x, y, 2, x, y, r);
+          g.addColorStop(0, coreHex);
+          g.addColorStop(0.5, hotHex);
+          g.addColorStop(1, "transparent");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.wrapS = THREE.RepeatWrapping;
+        tex.wrapT = THREE.RepeatWrapping;
+        return tex;
+      }
+    }
+
     /* =========================================================================
        7. PLAYER — Dangerous Dave 3D Character, Movement, Jumping, Shooting
        ========================================================================= */
@@ -2077,103 +2451,195 @@
       }
 
       buildDaveModel() {
+        RealisticAssetFactory.init();
+        const tex = RealisticAssetFactory.textures;
         const root = new THREE.Group();
 
-        const skinMat = new THREE.MeshLambertMaterial({ color: 0xffcc99 });
-        const redCapMat = new THREE.MeshLambertMaterial({ color: 0xe62e3d });
-        const shirtMat = new THREE.MeshLambertMaterial({ color: 0xf4f6f8 });
-        const vestMat = new THREE.MeshLambertMaterial({ color: 0x264653 });
-        const jeansMat = new THREE.MeshLambertMaterial({ color: 0x1d4ed8 });
-        const bootMat = new THREE.MeshLambertMaterial({ color: 0x3b2818 });
-        const gunMat = new THREE.MeshLambertMaterial({ color: 0x334155 });
+        const skinMat = new THREE.MeshStandardMaterial({ color: 0xf1c29b, roughness: 0.55, metalness: 0.05 });
+        const hairMat = new THREE.MeshStandardMaterial({ color: 0x4a2c18, roughness: 0.75 });
+        const redCapMat = new THREE.MeshStandardMaterial({ color: 0xd91e2e, roughness: 0.45, bumpMap: tex.denim, bumpScale: 0.015 });
+        const shirtMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, roughness: 0.65, bumpMap: tex.denim, bumpScale: 0.01 });
+        const vestMat = new THREE.MeshStandardMaterial({
+          color: 0x1e293b,
+          map: tex.vestLeather,
+          bumpMap: tex.vestLeather,
+          bumpScale: 0.02,
+          roughness: 0.42,
+          metalness: 0.25
+        });
+        const jeansMat = new THREE.MeshStandardMaterial({
+          color: 0x2563eb,
+          map: tex.denim,
+          bumpMap: tex.denim,
+          bumpScale: 0.025,
+          roughness: 0.7
+        });
+        const bootMat = new THREE.MeshStandardMaterial({ color: 0x2c1b10, roughness: 0.38, metalness: 0.15 });
+        const gunMat = new THREE.MeshStandardMaterial({
+          color: 0x64748b,
+          map: tex.darkMetal,
+          bumpMap: tex.darkMetal,
+          bumpScale: 0.02,
+          roughness: 0.28,
+          metalness: 0.82
+        });
+        const goldMat = new THREE.MeshStandardMaterial({ color: 0xffc43d, roughness: 0.22, metalness: 0.9 });
         const glowMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
 
-        // Torso
-        this.torso = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.68, 0.36), shirtMat);
+        // Sculpted Torso & Chest Armor
+        this.torso = new THREE.Group();
         this.torso.position.y = 0.96;
+        const innerTorso = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.24, 0.66, 14), shirtMat);
+        const chestVest = new THREE.Mesh(new THREE.CylinderGeometry(0.31, 0.27, 0.54, 14), vestMat);
+        chestVest.scale.set(1.08, 1, 0.82);
+
+        // Tactical Pouches & Belt
+        const belt = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.1, 14), bootMat);
+        belt.position.y = -0.28;
+        belt.scale.set(1.06, 1, 0.82);
+        const buckle = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.11, 0.06), goldMat);
+        buckle.position.set(0, -0.28, 0.22);
+
+        // Twin-Thruster Jetpack on Back
+        const jetpackGroup = new THREE.Group();
+        jetpackGroup.position.set(0, 0.04, -0.24);
+        const leftTank = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.46, 12), gunMat);
+        leftTank.position.x = -0.12;
+        const rightTank = leftTank.clone();
+        rightTank.position.x = 0.12;
+        const centerBridge = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.3, 0.14), vestMat);
+        const thrusterL = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.08, 0.1, 10), glowMat);
+        thrusterL.position.set(-0.12, -0.26, 0);
+        const thrusterR = thrusterL.clone();
+        thrusterR.position.x = 0.12;
+        jetpackGroup.add(leftTank, rightTank, centerBridge, thrusterL, thrusterR);
+
+        // Fortnite-Style Crossed Harvesting Pickaxe & Holographic Shield Back Bling
+        const pickaxeShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.78, 8), gunMat);
+        pickaxeShaft.position.set(0, 0.05, -0.34);
+        pickaxeShaft.rotation.z = 0.65;
+        const pickaxeHead = new THREE.Mesh(new THREE.ConeGeometry(0.11, 0.36, 6), glowMat);
+        pickaxeHead.position.set(-0.22, 0.28, -0.34);
+        pickaxeHead.rotation.z = -0.9;
+        const holoShield = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.022, 8, 20), glowMat);
+        holoShield.position.set(0, 0.08, -0.36);
+
+        this.torso.add(innerTorso, chestVest, belt, buckle, jetpackGroup, pickaxeShaft, pickaxeHead, holoShield);
         root.add(this.torso);
 
-        // Tactical Vest & Jetpack
-        const vest = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.56, 0.4), vestMat);
-        vest.position.y = 0.98;
-        root.add(vest);
-
-        const pack = new THREE.Mesh(new THREE.BoxGeometry(0.44, 0.48, 0.22), gunMat);
-        pack.position.set(0, 1.0, -0.26);
-        root.add(pack);
-
-        // Head
+        // Anatomically Sculpted Head & Cap
         this.headGroup = new THREE.Group();
         this.headGroup.position.set(0, 1.48, 0);
-        const head = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.44, 0.46), skinMat);
-        this.headGroup.add(head);
+        const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.12, 0.16, 12), skinMat);
+        neck.position.y = -0.18;
+        const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.24, 18, 16), skinMat);
+        cranium.scale.set(0.95, 1.05, 0.98);
+        const jaw = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.13, 0.18, 12), skinMat);
+        jaw.position.set(0, -0.08, 0.02);
+        const nose = new THREE.Mesh(new THREE.ConeGeometry(0.038, 0.1, 8), skinMat);
+        nose.rotation.x = Math.PI * 0.45;
+        nose.position.set(0, 0.0, 0.24);
+        const hairBack = new THREE.Mesh(new THREE.SphereGeometry(0.245, 14, 12), hairMat);
+        hairBack.position.set(0, 0.02, -0.03);
 
-        // Iconic Dangerous Dave Red Cap (backward/forward brim)
-        const capCrown = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.2, 0.5), redCapMat);
-        capCrown.position.y = 0.22;
-        this.headGroup.add(capCrown);
+        // Iconic Red Baseball Cap with Curved Visor & Emblem
+        const capDome = new THREE.Mesh(
+          new THREE.SphereGeometry(0.255, 18, 12, 0, Math.PI * 2, 0, Math.PI * 0.55),
+          redCapMat
+        );
+        capDome.position.y = 0.05;
+        const capVisor = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.04, 16, 1, false, -0.9, 1.8), redCapMat);
+        capVisor.position.set(0, 0.07, 0.14);
+        capVisor.rotation.x = 0.18;
+        const capBadge = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.07, 0.03), goldMat);
+        capBadge.position.set(0, 0.16, 0.24);
 
-        const capBrim = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.07, 0.26), redCapMat);
-        capBrim.position.set(0, 0.16, 0.32);
-        this.headGroup.add(capBrim);
-
-        // Eyes
-        const eyeMat = new THREE.MeshBasicMaterial({ color: 0x111827 });
-        const leftEye = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.08, 0.05), eyeMat);
-        leftEye.position.set(-0.11, 0.03, 0.23);
-        const rightEye = leftEye.clone();
-        rightEye.position.x = 0.11;
-        this.headGroup.add(leftEye, rightEye);
+        // Expressive Eyes & Brows
+        const scleraMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const pupilMat = new THREE.MeshBasicMaterial({ color: 0x0f172a });
+        for (const side of [-1, 1]) {
+          const sclera = new THREE.Mesh(new THREE.SphereGeometry(0.036, 8, 8), scleraMat);
+          sclera.position.set(side * 0.085, 0.02, 0.205);
+          const pupil = new THREE.Mesh(new THREE.SphereGeometry(0.02, 8, 8), pupilMat);
+          pupil.position.set(side * 0.085, 0.02, 0.232);
+          const brow = new THREE.Mesh(new THREE.BoxGeometry(0.075, 0.02, 0.03), hairMat);
+          brow.position.set(side * 0.085, 0.068, 0.215);
+          brow.rotation.z = side * -0.1;
+          this.headGroup.add(sclera, pupil, brow);
+        }
+        this.headGroup.add(neck, cranium, jaw, nose, hairBack, capDome, capVisor, capBadge);
         root.add(this.headGroup);
 
-        // Left & Right Arms
-        this.leftArm = new THREE.Group();
-        this.leftArm.position.set(-0.42, 1.22, 0);
-        const lArmMesh = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.55, 0.2), skinMat);
-        lArmMesh.position.y = -0.22;
-        this.leftArm.add(lArmMesh);
-        root.add(this.leftArm);
+        // Articulated Left & Right Arms (Shoulder Pad + Upper Arm + Forearm + Glove)
+        const buildArm = (isRight) => {
+          const armGroup = new THREE.Group();
+          armGroup.position.set(isRight ? 0.39 : -0.39, 1.22, 0);
+          const shoulderPad = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 10), vestMat);
+          const upperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.08, 0.28, 12), shirtMat);
+          upperArm.position.y = -0.14;
+          const forearm = new THREE.Mesh(new THREE.CylinderGeometry(0.078, 0.068, 0.26, 12), skinMat);
+          forearm.position.y = -0.36;
+          const glove = new THREE.Mesh(new THREE.SphereGeometry(0.082, 10, 10), bootMat);
+          glove.position.y = -0.5;
+          armGroup.add(shoulderPad, upperArm, forearm, glove);
+          return armGroup;
+        };
 
-        this.rightArm = new THREE.Group();
-        this.rightArm.position.set(0.42, 1.22, 0);
-        const rArmMesh = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.55, 0.2), skinMat);
-        rArmMesh.position.y = -0.22;
-        this.rightArm.add(rArmMesh);
+        this.leftArm = buildArm(false);
+        this.rightArm = buildArm(true);
+        root.add(this.leftArm, this.rightArm);
 
-        // Plasma Rifle attached to right arm
+        // High-Detail Sci-Fi Plasma Carbine Rifle attached to Right Arm
         this.gunGroup = new THREE.Group();
-        this.gunGroup.position.set(0, -0.36, 0.28);
-        const gunBody = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.18, 0.58), gunMat);
-        const gunCore = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.08, 0.32), glowMat);
-        gunCore.position.y = 0.04;
+        this.gunGroup.position.set(0, -0.44, 0.28);
+        const receiver = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.16, 0.46), gunMat);
+        const barrel = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.38, 12), gunMat);
+        barrel.rotation.x = Math.PI / 2;
+        barrel.position.set(0, 0.03, 0.32);
+        const plasmaCoil = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.048, 0.24, 12), glowMat);
+        plasmaCoil.rotation.x = Math.PI / 2;
+        plasmaCoil.position.set(0, 0.03, 0.16);
+        const scope = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.032, 0.18, 10), gunMat);
+        scope.rotation.x = Math.PI / 2;
+        scope.position.set(0, 0.12, 0.02);
+
         this.muzzleFlash = new THREE.Mesh(
-          new THREE.SphereGeometry(0.16, 6, 6),
-          new THREE.MeshBasicMaterial({ color: 0x00ffff })
+          new THREE.SphereGeometry(0.16, 10, 10),
+          new THREE.MeshBasicMaterial({ color: 0x67e8f9 })
         );
-        this.muzzleFlash.position.set(0, 0.02, 0.36);
+        this.muzzleFlash.position.set(0, 0.03, 0.54);
         this.muzzleFlash.visible = false;
-        this.gunGroup.add(gunBody, gunCore, this.muzzleFlash);
+        this.gunGroup.add(receiver, barrel, plasmaCoil, scope, this.muzzleFlash);
         this.rightArm.add(this.gunGroup);
-        root.add(this.rightArm);
 
-        // Left & Right Legs
-        this.leftLeg = new THREE.Group();
-        this.leftLeg.position.set(-0.17, 0.62, 0);
-        const lLegMesh = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.52, 0.24), jeansMat);
-        lLegMesh.position.y = -0.26;
-        const lBoot = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.16, 0.32), bootMat);
-        lBoot.position.set(0, -0.52, 0.04);
-        this.leftLeg.add(lLegMesh, lBoot);
-        root.add(this.leftLeg);
+        // Articulated Legs (Thigh + Knee Guard + Shin + Laced Combat Boot)
+        const buildLeg = (isRight) => {
+          const legGroup = new THREE.Group();
+          legGroup.position.set(isRight ? 0.15 : -0.15, 0.64, 0);
+          const thigh = new THREE.Mesh(new THREE.CylinderGeometry(0.115, 0.098, 0.3, 12), jeansMat);
+          thigh.position.y = -0.15;
+          const kneePad = new THREE.Mesh(new THREE.SphereGeometry(0.095, 10, 10), vestMat);
+          kneePad.position.set(0, -0.3, 0.03);
+          const shin = new THREE.Mesh(new THREE.CylinderGeometry(0.095, 0.082, 0.26, 12), jeansMat);
+          shin.position.y = -0.41;
+          const bootAnkle = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.095, 0.14, 12), bootMat);
+          bootAnkle.position.y = -0.52;
+          const bootFoot = new THREE.Mesh(new THREE.BoxGeometry(0.19, 0.11, 0.3), bootMat);
+          bootFoot.position.set(0, -0.58, 0.05);
+          legGroup.add(thigh, kneePad, shin, bootAnkle, bootFoot);
+          return legGroup;
+        };
 
-        this.rightLeg = new THREE.Group();
-        this.rightLeg.position.set(0.17, 0.62, 0);
-        const rLegMesh = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.52, 0.24), jeansMat);
-        rLegMesh.position.y = -0.26;
-        const rBoot = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.16, 0.32), bootMat);
-        rBoot.position.set(0, -0.52, 0.04);
-        this.rightLeg.add(rLegMesh, rBoot);
-        root.add(this.rightLeg);
+        this.leftLeg = buildLeg(false);
+        this.rightLeg = buildLeg(true);
+        root.add(this.leftLeg, this.rightLeg);
+
+        root.traverse((obj) => {
+          if (obj.isMesh) {
+            obj.castShadow = true;
+            obj.receiveShadow = true;
+          }
+        });
 
         return root;
       }
@@ -2510,85 +2976,340 @@
       }
 
       buildMesh() {
+        RealisticAssetFactory.init();
+        const tex = RealisticAssetFactory.textures;
         const g = new THREE.Group();
         this.bodyMaterials = [];
+        this.botLegs = [];
+        this.botArms = [];
+        this.botRotors = [];
 
-        const registerMat = (colorHex) => {
-          const m = new THREE.MeshLambertMaterial({ color: colorHex });
+        const registerMat = (colorHex, opts = {}) => {
+          const m = new THREE.MeshStandardMaterial({
+            color: colorHex,
+            roughness: opts.roughness !== undefined ? opts.roughness : 0.28,
+            metalness: opts.metalness !== undefined ? opts.metalness : 0.82,
+            map: opts.map || tex.metal,
+            bumpMap: opts.bumpMap || tex.metal,
+            bumpScale: opts.bumpScale !== undefined ? opts.bumpScale : 0.025
+          });
           this.bodyMaterials.push({ mat: m, baseColor: colorHex });
           return m;
         };
 
         if (this.type === "patrol") {
-          // Red Spider / Crawler
-          const bodyMat = registerMat(0xd90429);
-          const legMat = registerMat(0x2b2d42);
-          const eyeMat = new THREE.MeshBasicMaterial({ color: 0xffbe0b });
-          const body = new THREE.Mesh(new THREE.BoxGeometry(0.85, 0.55, 0.85), bodyMat);
-          body.position.y = 0.42;
-          g.add(body);
+          // MK-I SCOUT RECON BOT (Bipedal Combat Android with Piston Legs, LED Scanner Visor, Chest Core & Radar Antenna)
+          const chassisMat = registerMat(0xdc2626, { roughness: 0.25, metalness: 0.8, map: tex.metal });
+          const servoMat = registerMat(0x334155, { roughness: 0.32, metalness: 0.88, map: tex.darkMetal });
+          const chromeMat = registerMat(0xe2e8f0, { roughness: 0.15, metalness: 0.95, map: tex.metal });
+          const visorMat = new THREE.MeshBasicMaterial({ color: 0x00f5d4 });
+          const coreMat = new THREE.MeshBasicMaterial({ color: 0xfacc15 });
+
+          // Pelvis & Hydraulic Waist
+          const pelvis = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.16, 0.34), servoMat);
+          pelvis.position.y = 0.44;
+          const waistPiston = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.16, 0.18, 12), chromeMat);
+          waistPiston.position.y = 0.56;
+
+          // Armored Bot Torso & Glowing Power Cell
+          const torso = new THREE.Mesh(new THREE.BoxGeometry(0.58, 0.46, 0.42), chassisMat);
+          torso.position.y = 0.82;
+          const chestVent = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.28, 0.45), servoMat);
+          chestVent.position.y = 0.82;
+          const powerCell = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.48, 12), coreMat);
+          powerCell.rotation.x = Math.PI / 2;
+          powerCell.position.set(0, 0.82, 0.02);
+
+          // Robotic Sensor Head & Cylon LED Visor
+          const head = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.28, 0.38), chromeMat);
+          head.position.y = 1.22;
+          const visor = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.09, 0.41), visorMat);
+          visor.position.set(0, 1.23, 0.01);
+          const antennaRod = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.26, 8), chromeMat);
+          antennaRod.position.set(0.14, 1.46, -0.06);
+          const antennaTip = new THREE.Mesh(new THREE.SphereGeometry(0.045, 8, 8), coreMat);
+          antennaTip.position.set(0.14, 1.6, -0.06);
+
+          // Articulated Piston Legs & Clamp Arms
           for (let side of [-1, 1]) {
-            const eye = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.14, 0.08), eyeMat);
-            eye.position.set(side * 0.2, 0.48, 0.44);
-            g.add(eye);
-            const leg = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.35, 0.65), legMat);
-            leg.position.set(side * 0.48, 0.22, 0);
-            g.add(leg);
+            const legGroup = new THREE.Group();
+            legGroup.position.set(side * 0.17, 0.42, 0);
+            const hipJoint = new THREE.Mesh(new THREE.SphereGeometry(0.08, 10, 10), chromeMat);
+            const thigh = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.055, 0.22, 10), servoMat);
+            thigh.position.y = -0.12;
+            const shin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.22, 0.16), chassisMat);
+            shin.position.y = -0.28;
+            const foot = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.08, 0.28), servoMat);
+            foot.position.set(0, -0.38, 0.04);
+            legGroup.add(hipJoint, thigh, shin, foot);
+            this.botLegs.push(legGroup);
+            g.add(legGroup);
+
+            const armGroup = new THREE.Group();
+            armGroup.position.set(side * 0.36, 0.96, 0);
+            const shoulder = new THREE.Mesh(new THREE.SphereGeometry(0.09, 10, 10), servoMat);
+            const armBar = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.045, 0.32, 10), chromeMat);
+            armBar.position.set(0, -0.15, 0.08);
+            armBar.rotation.x = -0.5;
+            const claw = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.1, 0.18), chassisMat);
+            claw.position.set(0, -0.26, 0.2);
+            armGroup.add(shoulder, armBar, claw);
+            this.botArms.push(armGroup);
+            g.add(armGroup);
           }
+
+          g.add(pelvis, waistPiston, torso, chestVent, powerCell, head, visor, antennaRod, antennaTip);
+
         } else if (this.type === "flying") {
-          // Neon Bat / Hover Drone
-          const coreMat = registerMat(0x7209b7);
-          const wingMat = registerMat(0xf72585);
-          const core = new THREE.Mesh(new THREE.OctahedronGeometry(0.45, 0), coreMat);
-          core.position.y = 0.5;
-          this.leftWing = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.08, 0.35), wingMat);
-          this.leftWing.position.set(-0.5, 0.55, 0);
-          this.rightWing = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.08, 0.35), wingMat);
-          this.rightWing.position.set(0.5, 0.55, 0);
-          g.add(core, this.leftWing, this.rightWing);
+          // AERO-HUNTER DRONE BOT (Spherical Titanium Hull, Cyclops Optic Lens, Twin Tilt-Rotors & Under-Slung Blaster)
+          const hullMat = registerMat(0x4f46e5, { roughness: 0.2, metalness: 0.88, map: tex.metal });
+          const darkMetal = registerMat(0x1e293b, { roughness: 0.3, metalness: 0.9, map: tex.darkMetal });
+          const chromeMat = registerMat(0xe2e8f0, { roughness: 0.15, metalness: 0.95 });
+          const opticMat = new THREE.MeshBasicMaterial({ color: 0xff2a55 });
+          const thrusterGlow = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
+
+          // Armored Spherical Drone Core
+          const hull = new THREE.Mesh(new THREE.SphereGeometry(0.38, 16, 14), hullMat);
+          hull.position.y = 0.55;
+          const armorBelt = new THREE.Mesh(new THREE.TorusGeometry(0.38, 0.055, 8, 20), darkMetal);
+          armorBelt.rotation.x = Math.PI / 2;
+          armorBelt.position.y = 0.55;
+
+          // Front Cyclops Camera Optic & Twin Micro-Blasters
+          const lensRing = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.18, 0.12, 14), chromeMat);
+          lensRing.rotation.x = Math.PI / 2;
+          lensRing.position.set(0, 0.56, 0.34);
+          const lensEye = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 12), opticMat);
+          lensEye.position.set(0, 0.56, 0.38);
+
+          for (let side of [-1, 1]) {
+            const gun = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.38, 8), darkMetal);
+            gun.rotation.x = Math.PI / 2;
+            gun.position.set(side * 0.18, 0.32, 0.25);
+            g.add(gun);
+          }
+
+          // Twin Side Turbofan Rotor Pods
+          const buildRotorPod = (side) => {
+            const pod = new THREE.Group();
+            pod.position.set(side * 0.52, 0.62, 0);
+            const strut = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.07, 0.12), darkMetal);
+            strut.position.x = -side * 0.14;
+            const shroud = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.045, 8, 18), chromeMat);
+            shroud.rotation.x = Math.PI / 2;
+            const ionGlow = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.04, 12), thrusterGlow);
+            const bladeGroup = new THREE.Group();
+            const b1 = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.02, 0.06), darkMetal);
+            const b2 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.02, 0.42), darkMetal);
+            bladeGroup.add(b1, b2);
+            bladeGroup.position.y = 0.04;
+            this.botRotors.push(bladeGroup);
+            pod.add(strut, shroud, ionGlow, bladeGroup);
+            return pod;
+          };
+          this.leftWing = buildRotorPod(-1);
+          this.rightWing = buildRotorPod(1);
+          g.add(hull, armorBelt, lensRing, lensEye, this.leftWing, this.rightWing);
+
         } else if (this.type === "ranged") {
-          // Fire Cultist / Plasma Turret Sentinel
-          const robeMat = registerMat(0xf77f00);
-          const hoodMat = registerMat(0xd62828);
+          // CYBER-SNIPER ARTILLERY BOT (Humanoid Marksman Android with Hydraulic Limbs, Laser Rangefinder & Arm Railgun)
+          const armorMat = registerMat(0xea580c, { roughness: 0.24, metalness: 0.84, map: tex.metal });
+          const frameMat = registerMat(0x1e293b, { roughness: 0.32, metalness: 0.9, map: tex.darkMetal });
+          const chromeMat = registerMat(0xcbd5e1, { roughness: 0.18, metalness: 0.94, map: tex.metal });
           const orbMat = new THREE.MeshBasicMaterial({ color: 0x00f5d4 });
-          const torso = new THREE.Mesh(new THREE.ConeGeometry(0.5, 1.35, 6), robeMat);
-          torso.position.y = 0.68;
-          const head = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.45, 0.45), hoodMat);
-          head.position.y = 1.35;
-          this.castOrb = new THREE.Mesh(new THREE.SphereGeometry(0.18, 8, 8), orbMat);
-          this.castOrb.position.set(0, 1.0, 0.55);
-          g.add(torso, head, this.castOrb);
+
+          // Bipedal Robotic Legs & Pelvis
+          const pelvis = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.22, 0.22, 12), frameMat);
+          pelvis.position.y = 0.62;
+          for (let side of [-1, 1]) {
+            const legGroup = new THREE.Group();
+            legGroup.position.set(side * 0.16, 0.58, 0);
+            const thigh = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.07, 0.32, 10), frameMat);
+            thigh.position.y = -0.16;
+            const knee = new THREE.Mesh(new THREE.SphereGeometry(0.085, 10, 10), chromeMat);
+            knee.position.y = -0.32;
+            const shin = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.28, 0.16), armorMat);
+            shin.position.y = -0.44;
+            const foot = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.08, 0.26), frameMat);
+            foot.position.set(0, -0.55, 0.04);
+            legGroup.add(thigh, knee, shin, foot);
+            this.botLegs.push(legGroup);
+            g.add(legGroup);
+          }
+
+          // Angled Android Chest Chassis & Spine Core
+          const spine = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.18, 0.35, 10), chromeMat);
+          spine.position.y = 0.85;
+          const chest = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.48, 0.38), armorMat);
+          chest.position.y = 1.12;
+          const chestCore = new THREE.Mesh(new THREE.SphereGeometry(0.12, 12, 12), orbMat);
+          chestCore.position.set(0, 1.12, 0.2);
+
+          // Cylindrical Sniper-Bot Head with Multi-Optic Rangefinder
+          const head = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 0.32, 14), frameMat);
+          head.position.y = 1.54;
+          const scopeEye = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.18, 12), chromeMat);
+          scopeEye.rotation.x = Math.PI / 2;
+          scopeEye.position.set(0, 1.55, 0.18);
+          const lens = new THREE.Mesh(new THREE.SphereGeometry(0.065, 10, 10), orbMat);
+          lens.position.set(0, 1.55, 0.25);
+
+          // Shoulder Pauldrons & Integrated Railgun Arm
+          for (let side of [-1, 1]) {
+            const shoulder = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.24, 0.32), chromeMat);
+            shoulder.position.set(side * 0.42, 1.24, 0);
+            const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.06, 0.45, 10), frameMat);
+            arm.rotation.x = Math.PI / 2;
+            arm.position.set(side * 0.4, 1.08, 0.22);
+            g.add(shoulder, arm);
+          }
+
+          // Gyroscopic Plasma Emitter Core at Front
+          this.castOrb = new THREE.Group();
+          this.castOrb.position.set(0, 1.08, 0.56);
+          const coreSphere = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 12), orbMat);
+          const ring1 = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.024, 8, 20), chromeMat);
+          const ring2 = new THREE.Mesh(new THREE.TorusGeometry(0.26, 0.02, 8, 20), armorMat);
+          ring2.rotation.x = Math.PI / 2;
+          this.castOrb.add(coreSphere, ring1, ring2);
+
+          g.add(pelvis, spine, chest, chestCore, head, scopeEye, lens, this.castOrb);
+
         } else if (this.type === "tough") {
-          // Armored Dungeon Goliath
-          const armorMat = registerMat(0x4a5568);
-          const trimMat = registerMat(0xe63946);
-          const body = new THREE.Mesh(new THREE.BoxGeometry(1.15, 1.35, 0.8), armorMat);
-          body.position.y = 0.9;
-          const shoulders = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.35, 0.9), trimMat);
-          shoulders.position.y = 1.48;
-          const visor = new THREE.Mesh(
-            new THREE.BoxGeometry(0.6, 0.16, 0.12),
-            new THREE.MeshBasicMaterial({ color: 0xffbe0b })
-          );
-          visor.position.set(0, 1.48, 0.44);
-          g.add(body, shoulders, visor);
+          // HEAVY ENFORCER MECH-BOT (Industrial Armored Dreadnought Bot with Hydraulic Legs, Exhaust Stacks & Dual Arm Cannons)
+          const armorMat = registerMat(0x64748b, { roughness: 0.22, metalness: 0.88, map: tex.metal });
+          const hazardMat = registerMat(0xb91c1c, { roughness: 0.28, metalness: 0.78, map: tex.darkMetal });
+          const darkSteel = registerMat(0x1e293b, { roughness: 0.35, metalness: 0.9, map: tex.darkMetal });
+          const visorMat = new THREE.MeshBasicMaterial({ color: 0xffbe0b });
+
+          // Heavy Stomping Mech Legs
+          const pelvis = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.28, 0.56), darkSteel);
+          pelvis.position.y = 0.62;
+          for (let side of [-1, 1]) {
+            const legGroup = new THREE.Group();
+            legGroup.position.set(side * 0.28, 0.58, 0);
+            const thigh = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.32, 0.32), armorMat);
+            thigh.position.y = -0.16;
+            const shin = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 0.34, 12), hazardMat);
+            shin.position.y = -0.38;
+            const foot = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.14, 0.46), darkSteel);
+            foot.position.set(0, -0.52, 0.06);
+            legGroup.add(thigh, shin, foot);
+            this.botLegs.push(legGroup);
+            g.add(legGroup);
+          }
+
+          // Hulking Mech Torso & Glowing Reactor Grille
+          const torso = new THREE.Mesh(new THREE.BoxGeometry(1.12, 0.82, 0.76), armorMat);
+          torso.position.y = 1.14;
+          const chestBumper = new THREE.Mesh(new THREE.BoxGeometry(0.88, 0.52, 0.18), hazardMat);
+          chestBumper.position.set(0, 1.14, 0.42);
+          const reactorGrille = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.24, 0.22), visorMat);
+          reactorGrille.position.set(0, 1.16, 0.44);
+
+          // Recessed Dome Sentry Bot Head & Twin Exhaust Pipes
+          const head = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.34, 0.36, 14), darkSteel);
+          head.position.y = 1.68;
+          const visor = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.1, 0.26), visorMat);
+          visor.position.set(0, 1.68, 0.22);
+
+          for (let side of [-1, 1]) {
+            const stack = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 0.55, 10), darkSteel);
+            stack.position.set(side * 0.36, 1.65, -0.32);
+            const pauldron = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.42, 0.56), hazardMat);
+            pauldron.position.set(side * 0.72, 1.36, 0);
+
+            const armGroup = new THREE.Group();
+            armGroup.position.set(side * 0.74, 1.18, 0);
+            const upperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 0.42, 10), darkSteel);
+            upperArm.position.y = -0.2;
+            const cannon = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.28, 0.62), armorMat);
+            cannon.position.set(0, -0.36, 0.24);
+            armGroup.add(upperArm, cannon);
+            this.botArms.push(armGroup);
+            g.add(stack, pauldron, armGroup);
+          }
+
+          g.add(pelvis, torso, chestBumper, reactorGrille, head, visor);
+
         } else if (this.type === "boss") {
-          // Temple Guardian Overlord
-          const bossArmor = registerMat(0x9b2226);
-          const bossGold = registerMat(0xffc43d);
+          // OMEGA PRIME MECHA-OVERLORD (Colossal Titanium, Obsidian & Gold War-Robot Boss)
+          const bossArmor = registerMat(0x7f1d1d, { roughness: 0.22, metalness: 0.86, map: tex.darkMetal });
+          const bossGold = registerMat(0xffc43d, { roughness: 0.16, metalness: 0.94, map: tex.gold });
+          const steelMat = registerMat(0x475569, { roughness: 0.25, metalness: 0.9, map: tex.metal });
           const coreGlow = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
 
-          const torso = new THREE.Mesh(new THREE.BoxGeometry(1.9, 2.0, 1.3), bossArmor);
-          torso.position.y = 1.4;
-          const crown = new THREE.Mesh(new THREE.ConeGeometry(0.9, 0.8, 5), bossGold);
-          crown.position.y = 2.75;
-          const chestCore = new THREE.Mesh(new THREE.SphereGeometry(0.42, 10, 10), coreGlow);
-          chestCore.position.set(0, 1.45, 0.68);
-          this.bossLeftCanon = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.45, 1.2), bossGold);
-          this.bossLeftCanon.position.set(-1.25, 1.6, 0.35);
-          this.bossRightCanon = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.45, 1.2), bossGold);
-          this.bossRightCanon.position.set(1.25, 1.6, 0.35);
-          g.add(torso, crown, chestCore, this.bossLeftCanon, this.bossRightCanon);
+          // Heavy Articulated Hydraulic Mecha Legs
+          const pelvis = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.42, 1.0), steelMat);
+          pelvis.position.y = 1.05;
+          g.add(pelvis);
+
+          for (let side of [-1, 1]) {
+            const legGroup = new THREE.Group();
+            legGroup.position.set(side * 0.56, 1.0, 0);
+            const thigh = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.52, 0.52), steelMat);
+            thigh.position.y = -0.25;
+            const knee = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.52, 12), bossGold);
+            knee.rotation.z = Math.PI / 2;
+            knee.position.set(0, -0.5, 0.08);
+            const shin = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.55, 0.62), bossArmor);
+            shin.position.y = -0.72;
+            const foot = new THREE.Mesh(new THREE.BoxGeometry(0.62, 0.22, 0.88), bossGold);
+            foot.position.set(0, -0.92, 0.12);
+            legGroup.add(thigh, knee, shin, foot);
+            this.botLegs.push(legGroup);
+            g.add(legGroup);
+          }
+
+          // Armored Mecha Torso & Arc-Reactor Core
+          const torso = new THREE.Mesh(new THREE.BoxGeometry(1.95, 1.48, 1.28), bossArmor);
+          torso.position.y = 1.92;
+          const chestFrame = new THREE.Mesh(new THREE.TorusGeometry(0.46, 0.09, 10, 24), bossGold);
+          chestFrame.position.set(0, 1.95, 0.66);
+          const chestCore = new THREE.Mesh(new THREE.SphereGeometry(0.38, 16, 16), coreGlow);
+          chestCore.position.set(0, 1.95, 0.62);
+
+          // Mecha Command Head with Glowing Cyber-Visor & Twin Radar Fins
+          const head = new THREE.Mesh(new THREE.BoxGeometry(0.82, 0.64, 0.76), steelMat);
+          head.position.y = 2.94;
+          const eyes = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.16, 0.22), coreGlow);
+          eyes.position.set(0, 2.96, 0.34);
+          for (let side of [-1, 1]) {
+            const fin = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.58, 0.32), bossGold);
+            fin.position.set(side * 0.48, 3.12, -0.05);
+            fin.rotation.z = side * -0.25;
+            g.add(fin);
+          }
+
+          // Back-Mounted Reactor Turbine Ring
+          const halo = new THREE.Mesh(new THREE.TorusGeometry(1.18, 0.07, 8, 28), bossGold);
+          halo.position.set(0, 2.35, -0.68);
+          this.botRotors.push(halo);
+
+          // Twin Multi-Barrel Rotary Gatling Shoulder Cannons
+          const buildCannon = (side) => {
+            const cg = new THREE.Group();
+            cg.position.set(side * 1.36, 2.18, 0.22);
+            const mount = new THREE.Mesh(new THREE.BoxGeometry(0.58, 0.58, 0.68), bossGold);
+            const barrelCluster = new THREE.Group();
+            for (let b = 0; b < 4; b++) {
+              const ang = (b / 4) * Math.PI * 2;
+              const pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, 1.35, 8), steelMat);
+              pipe.rotation.x = Math.PI / 2;
+              pipe.position.set(Math.cos(ang) * 0.13, Math.sin(ang) * 0.13, 0.52);
+              barrelCluster.add(pipe);
+            }
+            const muzzle = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.045, 8, 16), coreGlow);
+            muzzle.position.z = 1.18;
+            barrelCluster.add(muzzle);
+            this.botRotors.push(barrelCluster);
+            cg.add(mount, barrelCluster);
+            return cg;
+          };
+          this.bossLeftCanon = buildCannon(-1);
+          this.bossRightCanon = buildCannon(1);
+
+          g.add(torso, chestFrame, chestCore, head, eyes, halo, this.bossLeftCanon, this.bossRightCanon);
         }
 
         // Overhead health bar for non-boss enemies
@@ -2605,6 +3326,13 @@
           this.hpFillMesh.position.set(0, this.hitHeight + 0.45, 0.01);
           g.add(hpBg, this.hpFillMesh);
         }
+
+        g.traverse((obj) => {
+          if (obj.isMesh && obj !== this.hpFillMesh) {
+            obj.castShadow = true;
+            obj.receiveShadow = true;
+          }
+        });
 
         return g;
       }
@@ -2663,15 +3391,38 @@
           this.mesh.rotation.y = Math.atan2(toPlayer.x, toPlayer.z);
         }
 
-        // Flying bobbing animation
+        // Mechanical Bot Animations (Spinning Rotors, Bipedal Piston Stride, Gyroscope Rings)
+        for (let r = 0; r < this.botRotors.length; r++) {
+          if (this.type === "flying") {
+            this.botRotors[r].rotation.y += dt * 28;
+          } else {
+            this.botRotors[r].rotation.z += dt * 6;
+          }
+        }
+        if (this.botLegs.length === 2) {
+          const stride = Math.sin(this.animPhase * 1.8) * 0.55;
+          this.botLegs[0].rotation.x = stride;
+          this.botLegs[1].rotation.x = -stride;
+        }
+        if (this.botArms.length === 2) {
+          const armSwing = Math.sin(this.animPhase * 1.8) * 0.35;
+          this.botArms[0].rotation.x = -armSwing;
+          this.botArms[1].rotation.x = armSwing;
+        }
+        if (this.castOrb) {
+          this.castOrb.rotation.y += dt * 4.5;
+          this.castOrb.rotation.z += dt * 3.0;
+        }
+
+        // Hover / hydraulic stride bobbing animation
         if (this.type === "flying") {
           pos.y = this.baseY + Math.sin(this.animPhase * 1.4) * 0.45;
           if (this.leftWing && this.rightWing) {
-            this.leftWing.rotation.z = Math.sin(this.animPhase * 4) * 0.55;
-            this.rightWing.rotation.z = -Math.sin(this.animPhase * 4) * 0.55;
+            this.leftWing.rotation.x = Math.sin(this.animPhase * 2) * 0.22;
+            this.rightWing.rotation.x = Math.sin(this.animPhase * 2) * 0.22;
           }
         } else {
-          pos.y = this.baseY + Math.abs(Math.sin(this.animPhase * 1.6)) * 0.08;
+          pos.y = this.baseY + Math.abs(Math.sin(this.animPhase * 1.8)) * 0.06;
         }
 
         // Ranged & Boss projectile attacks
@@ -2754,6 +3505,8 @@
         this.movingPlatforms = [];
         this.animatedHazards = [];
         this.animatedObjects = [];
+        this.lavaMaterials = [];
+        this.currentLevelTheme = 1;
       }
 
       clear() {
@@ -2764,21 +3517,202 @@
         this.movingPlatforms.length = 0;
         this.animatedHazards.length = 0;
         this.animatedObjects.length = 0;
+        this.lavaMaterials.length = 0;
         this.collision.clear();
       }
 
-      addPlatform(x, y, z, w, h, d, colorHex, trimColorHex = null) {
-        const mat = new THREE.MeshLambertMaterial({ color: colorHex });
-        const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
-        mesh.position.set(x, y - h / 2, z);
-        this.levelGroup.add(mesh);
+      getThemeStoneTexture() {
+        RealisticAssetFactory.init();
+        const t = RealisticAssetFactory.textures;
+        const mapByLevel = {
+          1: t.sandstone,
+          2: t.cavernRock,
+          3: t.dungeonBrick,
+          4: t.fortressStone,
+          5: t.templeObsidian
+        };
+        return mapByLevel[this.currentLevelTheme] || t.stone;
+      }
 
-        if (trimColorHex !== null) {
-          const trimMat = new THREE.MeshLambertMaterial({ color: trimColorHex });
-          const trim = new THREE.Mesh(new THREE.BoxGeometry(w + 0.12, 0.22, d + 0.12), trimMat);
-          trim.position.set(x, y - 0.11, z);
-          this.levelGroup.add(trim);
+      buildLandscapeBackdrop(levelIndex) {
+        this.currentLevelTheme = levelIndex;
+        RealisticAssetFactory.init();
+        const stoneTex = this.getThemeStoneTexture();
+
+        // Distant Realistic Mountain Peaks, Cavern Pillars & Ruins Silhouette Ring
+        const ringGroup = new THREE.Group();
+        const rockMat = new THREE.MeshStandardMaterial({
+          map: stoneTex,
+          bumpMap: stoneTex,
+          bumpScale: 0.08,
+          roughness: 0.88,
+          metalness: 0.08
+        });
+
+        const peakCount = 26;
+        for (let i = 0; i < peakCount; i++) {
+          const angle = (i / peakCount) * Math.PI * 2;
+          const dist = 58 + (i % 3) * 14;
+          const h = 28 + ((i * 7) % 24);
+          const r = 10 + ((i * 5) % 8);
+          const peak = new THREE.Mesh(new THREE.ConeGeometry(r, h, 7), rockMat);
+          peak.position.set(Math.cos(angle) * dist, h * 0.32 - 14, -24 + Math.sin(angle) * dist);
+          peak.rotation.y = i * 0.9;
+          ringGroup.add(peak);
         }
+
+        // Atmospheric Starfield / Cavern Bioluminescent Spores Overhead
+        const starGeo = new THREE.BufferGeometry();
+        const starCount = 220;
+        const positions = new Float32Array(starCount * 3);
+        for (let i = 0; i < starCount; i++) {
+          positions[i * 3] = (Math.random() - 0.5) * 140;
+          positions[i * 3 + 1] = 12 + Math.random() * 48;
+          positions[i * 3 + 2] = -25 + (Math.random() - 0.5) * 140;
+        }
+        starGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        const starColor = levelIndex === 2 ? 0x67e8f9 : levelIndex === 3 ? 0x34d399 : 0xfde68a;
+        const stars = new THREE.Points(
+          starGeo,
+          new THREE.PointsMaterial({ color: starColor, size: 0.35, transparent: true, opacity: 0.75 })
+        );
+        // Fortnite Purple Storm Wall Boundary Cylinder & Floating Supply Drops in Sky
+        const stormMat = new THREE.MeshBasicMaterial({
+          color: 0x9333ea,
+          transparent: true,
+          opacity: 0.14,
+          side: THREE.BackSide
+        });
+        const stormWall = new THREE.Mesh(new THREE.CylinderGeometry(85, 85, 90, 28, 1, true), stormMat);
+        stormWall.position.set(0, 20, -25);
+        ringGroup.add(stormWall);
+
+        // Floating Fortnite Supply Drop Balloons in the sky
+        const balloonMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.3 });
+        const crateMat = new THREE.MeshStandardMaterial({ color: 0x2563eb, roughness: 0.4 });
+        for (let s = 0; s < 4; s++) {
+          const sdGroup = new THREE.Group();
+          const sx = (s % 2 === 0 ? -1 : 1) * (22 + s * 6);
+          const sz = -14 - s * 14;
+          const sy = 14 + (s % 2) * 5;
+          const crate = new THREE.Mesh(new THREE.BoxGeometry(1.4, 1.4, 1.4), crateMat);
+          const balloon = new THREE.Mesh(new THREE.SphereGeometry(1.5, 14, 12), balloonMat);
+          balloon.position.y = 2.8;
+          const rope = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.0, 6), crateMat);
+          rope.position.y = 1.4;
+          sdGroup.add(crate, balloon, rope);
+          sdGroup.position.set(sx, sy, sz);
+          ringGroup.add(sdGroup);
+        }
+
+        ringGroup.add(stars);
+        this.levelGroup.add(ringGroup);
+      }
+
+      addPlatform(x, y, z, w, h, d, colorHex, trimColorHex = null) {
+        RealisticAssetFactory.init();
+        const stoneTex = this.getThemeStoneTexture();
+
+        const platformCluster = new THREE.Group();
+        platformCluster.position.set(x, y - h / 2, z);
+
+        const mat = new THREE.MeshStandardMaterial({
+          color: colorHex,
+          map: stoneTex,
+          bumpMap: stoneTex,
+          bumpScale: 0.045,
+          roughness: 0.78,
+          metalness: 0.12
+        });
+        const bodyMesh = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat);
+        bodyMesh.castShadow = true;
+        bodyMesh.receiveShadow = true;
+        platformCluster.add(bodyMesh);
+
+        // Beveled Stone Cornice Ledge & Weathered Under-Rock Taper
+        if (trimColorHex !== null) {
+          const trimMat = new THREE.MeshStandardMaterial({
+            color: trimColorHex,
+            map: stoneTex,
+            bumpMap: stoneTex,
+            bumpScale: 0.03,
+            roughness: 0.55,
+            metalness: 0.25
+          });
+          const cornice = new THREE.Mesh(new THREE.BoxGeometry(w + 0.18, 0.24, d + 0.18), trimMat);
+          cornice.position.y = h / 2 - 0.12;
+          cornice.castShadow = true;
+          cornice.receiveShadow = true;
+          platformCluster.add(cornice);
+        }
+
+        // Tapered rocky cliff base under larger platforms for realistic depth
+        if (w >= 5 && d >= 5) {
+          const underRock = new THREE.Mesh(
+            new THREE.CylinderGeometry(Math.min(w, d) * 0.46, Math.min(w, d) * 0.22, h * 1.35, 7),
+            mat
+          );
+          underRock.position.y = -h * 0.85;
+          underRock.rotation.y = (x + z) * 0.3;
+          platformCluster.add(underRock);
+        }
+
+        // Fortnite Stylized Vibrant Turf Top Cap on platforms
+        const turfMat = new THREE.MeshStandardMaterial({
+          color: this.currentLevelTheme === 1 ? 0x22c55e : (trimColorHex || colorHex),
+          map: RealisticAssetFactory.textures.fnGrass,
+          roughness: 0.55,
+          metalness: 0.08
+        });
+        const turfCap = new THREE.Mesh(new THREE.BoxGeometry(w + 0.08, 0.16, d + 0.08), turfMat);
+        turfCap.position.y = h / 2 + 0.02;
+        turfCap.receiveShadow = true;
+        platformCluster.add(turfCap);
+
+        // Scatter Fortnite Stylized Pine Trees, Slurp Mushrooms & Temple Braziers on wide platforms
+        if (w >= 10 && d >= 10 && trimColorHex !== null) {
+          const trunkMat = new THREE.MeshStandardMaterial({ color: 0x78350f, roughness: 0.7 });
+          const foliageMat = new THREE.MeshStandardMaterial({
+            color: this.currentLevelTheme === 1 ? 0x16a34a : 0x06b6d4,
+            roughness: 0.45
+          });
+          for (const sx of [-1, 1]) {
+            const treeX = sx * (w / 2 - 1.2);
+            const treeZ = (d / 2 - 1.2);
+            const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.26, 1.2, 8), trunkMat);
+            trunk.position.set(treeX, h / 2 + 0.6, treeZ);
+            const tier1 = new THREE.Mesh(new THREE.ConeGeometry(1.1, 1.5, 7), foliageMat);
+            tier1.position.set(treeX, h / 2 + 1.6, treeZ);
+            const tier2 = new THREE.Mesh(new THREE.ConeGeometry(0.85, 1.3, 7), foliageMat);
+            tier2.position.set(treeX, h / 2 + 2.4, treeZ);
+            platformCluster.add(trunk, tier1, tier2);
+          }
+          const pillarMat = new THREE.MeshStandardMaterial({
+            color: trimColorHex,
+            map: stoneTex,
+            bumpMap: stoneTex,
+            bumpScale: 0.04,
+            roughness: 0.65
+          });
+          for (const sx of [-1, 1]) {
+            const colX = sx * (w / 2 - 0.65);
+            const colZ = -(d / 2 - 0.65);
+            const base = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.25, 0.75), pillarMat);
+            base.position.set(colX, h / 2 + 0.12, colZ);
+            const shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.28, 1.8, 10), pillarMat);
+            shaft.position.set(colX, h / 2 + 1.0, colZ);
+            shaft.castShadow = true;
+            // Brazier torch flame on top of ruin column
+            const flame = new THREE.Mesh(
+              new THREE.ConeGeometry(0.18, 0.42, 8),
+              new THREE.MeshBasicMaterial({ color: 0xff9f1c })
+            );
+            flame.position.set(colX, h / 2 + 2.05, colZ);
+            platformCluster.add(base, shaft, flame);
+          }
+        }
+
+        this.levelGroup.add(platformCluster);
 
         const solid = {
           minX: x - w / 2,
@@ -2789,7 +3723,7 @@
           maxZ: z + d / 2,
           deltaX: 0,
           deltaZ: 0,
-          mesh
+          mesh: platformCluster
         };
         this.collision.solids.push(solid);
         return solid;
@@ -2810,22 +3744,38 @@
       }
 
       addBrickWall(x, y, z, w, h, d, colorHex) {
-        return this.addPlatform(x, y + h, z, w, h, d, colorHex);
+        return this.addPlatform(x, y + h, z, w, h, d, colorHex, colorHex);
       }
 
       addLadder(x, minY, maxY, z) {
+        RealisticAssetFactory.init();
+        const tex = RealisticAssetFactory.textures;
         const height = maxY - minY;
         const group = new THREE.Group();
-        const railMat = new THREE.MeshLambertMaterial({ color: 0xd97706 });
-        const leftRail = new THREE.Mesh(new THREE.BoxGeometry(0.12, height, 0.12), railMat);
-        leftRail.position.set(-0.4, minY + height / 2, 0);
+        const railMat = new THREE.MeshStandardMaterial({
+          color: 0xb45309,
+          map: tex.wood,
+          bumpMap: tex.wood,
+          bumpScale: 0.03,
+          roughness: 0.65
+        });
+        const rungMat = new THREE.MeshStandardMaterial({
+          color: 0x94a3b8,
+          map: tex.metal,
+          roughness: 0.35,
+          metalness: 0.8
+        });
+
+        const leftRail = new THREE.Mesh(new THREE.CylinderGeometry(0.065, 0.065, height, 10), railMat);
+        leftRail.position.set(-0.42, minY + height / 2, 0);
         const rightRail = leftRail.clone();
-        rightRail.position.x = 0.4;
+        rightRail.position.x = 0.42;
         group.add(leftRail, rightRail);
 
-        const rungs = Math.floor(height * 2.2);
+        const rungs = Math.floor(height * 2.4);
         for (let i = 0; i <= rungs; i++) {
-          const rung = new THREE.Mesh(new THREE.BoxGeometry(0.84, 0.08, 0.1), railMat);
+          const rung = new THREE.Mesh(new THREE.CylinderGeometry(0.038, 0.038, 0.86, 8), rungMat);
+          rung.rotation.z = Math.PI / 2;
           rung.position.set(0, minY + (i / rungs) * height, 0);
           group.add(rung);
         }
@@ -2843,27 +3793,47 @@
       }
 
       addSpikeTrap(x, y, z, w, d, timed = false) {
+        RealisticAssetFactory.init();
+        const tex = RealisticAssetFactory.textures;
         const group = new THREE.Group();
-        const base = new THREE.Mesh(
-          new THREE.BoxGeometry(w, 0.12, d),
-          new THREE.MeshLambertMaterial({ color: 0x334155 })
-        );
-        base.position.set(0, 0.06, 0);
+        const baseMat = new THREE.MeshStandardMaterial({
+          color: 0x334155,
+          map: tex.darkMetal,
+          bumpMap: tex.darkMetal,
+          bumpScale: 0.03,
+          roughness: 0.45,
+          metalness: 0.75
+        });
+        const base = new THREE.Mesh(new THREE.BoxGeometry(w, 0.14, d), baseMat);
+        base.position.set(0, 0.07, 0);
         group.add(base);
 
         const spikesGroup = new THREE.Group();
-        const spikeMat = new THREE.MeshLambertMaterial({ color: 0xe2e8f0 });
+        const spikeMat = new THREE.MeshStandardMaterial({
+          color: 0xe2e8f0,
+          map: tex.metal,
+          roughness: 0.18,
+          metalness: 0.92
+        });
+        const tipMat = new THREE.MeshStandardMaterial({
+          color: 0xdc2626,
+          roughness: 0.3,
+          metalness: 0.6
+        });
+
         const cols = Math.max(2, Math.floor(w * 1.5));
         const rows = Math.max(2, Math.floor(d * 1.5));
         for (let ix = 0; ix < cols; ix++) {
           for (let iz = 0; iz < rows; iz++) {
-            const cone = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.65, 5), spikeMat);
-            cone.position.set(
-              -w / 2 + (ix + 0.5) * (w / cols),
-              0.38,
-              -d / 2 + (iz + 0.5) * (d / rows)
-            );
-            spikesGroup.add(cone);
+            const sx = -w / 2 + (ix + 0.5) * (w / cols);
+            const sz = -d / 2 + (iz + 0.5) * (d / rows);
+            const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.17, 0.12, 8), baseMat);
+            collar.position.set(sx, 0.14, sz);
+            const cone = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.68, 10), spikeMat);
+            cone.position.set(sx, 0.42, sz);
+            const tip = new THREE.Mesh(new THREE.ConeGeometry(0.055, 0.24, 8), tipMat);
+            tip.position.set(sx, 0.65, sz);
+            spikesGroup.add(collar, cone, tip);
           }
         }
         group.add(spikesGroup);
@@ -2889,9 +3859,29 @@
       }
 
       addLavaPit(x, y, z, w, d, colorHex = 0xff3e00) {
-        const lavaMat = new THREE.MeshBasicMaterial({ color: colorHex });
-        const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, 0.4, d), lavaMat);
-        mesh.position.set(x, y - 0.2, z);
+        RealisticAssetFactory.init();
+        const tex = RealisticAssetFactory.textures;
+        let lavaTex = tex.lava;
+        if (colorHex === 0x10b981) lavaTex = tex.acid;
+        else if (colorHex === 0x9d4edd) lavaTex = tex.voidLava;
+
+        const clonedTex = lavaTex.clone();
+        clonedTex.needsUpdate = true;
+        clonedTex.repeat.set(Math.max(2, Math.round(w / 6)), Math.max(2, Math.round(d / 6)));
+
+        const lavaMat = new THREE.MeshStandardMaterial({
+          color: 0xffffff,
+          map: clonedTex,
+          emissive: colorHex,
+          emissiveMap: clonedTex,
+          emissiveIntensity: 0.85,
+          roughness: 0.25,
+          metalness: 0.1
+        });
+        this.lavaMaterials.push(clonedTex);
+
+        const mesh = new THREE.Mesh(new THREE.BoxGeometry(w, 0.5, d), lavaMat);
+        mesh.position.set(x, y - 0.25, z);
         this.levelGroup.add(mesh);
 
         this.collision.hazards.push({
@@ -2909,44 +3899,141 @@
 
       addCollectible(x, y, z, kind = "gem") {
         // kind: 'gem' (100 pts), 'crown' (350 pts), 'medkit' (+35 HP), 'trophy' (Unlocks Exit Door!)
+        RealisticAssetFactory.init();
+        const tex = RealisticAssetFactory.textures;
         const group = new THREE.Group();
-        let mesh;
+        let mesh = new THREE.Group();
         let value = 100;
         let colorHex = 0x00e5ff;
 
         if (kind === "gem") {
+          // Brilliant-Cut Multi-Faceted Crystal Sapphire with Halo Ring
           colorHex = 0x00e5ff;
           value = 100;
-          mesh = new THREE.Mesh(
-            new THREE.OctahedronGeometry(0.36, 0),
-            new THREE.MeshLambertMaterial({ color: colorHex, emissive: 0x004466 })
+          const crystalMat = new THREE.MeshPhysicalMaterial({
+            color: 0x38bdf8,
+            emissive: 0x0284c7,
+            emissiveIntensity: 0.45,
+            roughness: 0.08,
+            metalness: 0.15,
+            clearcoat: 1.0,
+            reflectivity: 1.0
+          });
+          const crownCut = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.34, 0.16, 8), crystalMat);
+          crownCut.position.y = 0.12;
+          const pavilionCut = new THREE.Mesh(new THREE.ConeGeometry(0.34, 0.36, 8), crystalMat);
+          pavilionCut.rotation.x = Math.PI;
+          pavilionCut.position.y = -0.14;
+          const orbitRing = new THREE.Mesh(
+            new THREE.TorusGeometry(0.42, 0.018, 6, 20),
+            new THREE.MeshBasicMaterial({ color: 0x67e8f9 })
           );
+          orbitRing.rotation.x = Math.PI / 3;
+          mesh.add(crownCut, pavilionCut, orbitRing);
+
         } else if (kind === "crown") {
+          // Ornate Royal Monarch Crown with Velvet Cushion & Embedded Rubies
           colorHex = 0xff3e4d;
           value = 300;
-          mesh = new THREE.Mesh(
-            new THREE.OctahedronGeometry(0.45, 0),
-            new THREE.MeshLambertMaterial({ color: 0xff2a55, emissive: 0x550011 })
-          );
+          const goldMat = new THREE.MeshStandardMaterial({
+            color: 0xffd166,
+            map: tex.gold,
+            roughness: 0.18,
+            metalness: 0.92
+          });
+          const velvetMat = new THREE.MeshStandardMaterial({ color: 0x991b1b, roughness: 0.7 });
+          const rubyMat = new THREE.MeshBasicMaterial({ color: 0xff2a55 });
+
+          const band = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.3, 0.18, 12), goldMat);
+          const cushion = new THREE.Mesh(new THREE.SphereGeometry(0.29, 12, 10), velvetMat);
+          cushion.position.y = 0.06;
+          mesh.add(band, cushion);
+
+          for (let i = 0; i < 6; i++) {
+            const ang = (i / 6) * Math.PI * 2;
+            const spire = new THREE.Mesh(new THREE.ConeGeometry(0.065, 0.24, 6), goldMat);
+            spire.position.set(Math.cos(ang) * 0.31, 0.2, Math.sin(ang) * 0.31);
+            const pearl = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 8), rubyMat);
+            pearl.position.set(Math.cos(ang) * 0.34, 0.0, Math.sin(ang) * 0.34);
+            mesh.add(spire, pearl);
+          }
+
         } else if (kind === "medkit") {
+          // Tactical Field Medical Case with Metallic Latches & Raised Cross Emblem
           colorHex = 0x22e58b;
           value = 50;
-          mesh = new THREE.Mesh(
-            new THREE.BoxGeometry(0.5, 0.5, 0.5),
-            new THREE.MeshLambertMaterial({ color: 0x22e58b, emissive: 0x0a4422 })
-          );
+          const caseMat = new THREE.MeshStandardMaterial({ color: 0xf8fafc, roughness: 0.35, metalness: 0.15 });
+          const greenMat = new THREE.MeshStandardMaterial({
+            color: 0x10b981,
+            emissive: 0x059669,
+            emissiveIntensity: 0.35,
+            roughness: 0.3
+          });
+          const latchMat = new THREE.MeshStandardMaterial({ color: 0x64748b, metalness: 0.85, roughness: 0.25 });
+
+          const box = new THREE.Mesh(new THREE.BoxGeometry(0.56, 0.42, 0.26), caseMat);
+          const handle = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.025, 6, 12, Math.PI), latchMat);
+          handle.position.y = 0.21;
+          const crossV = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.26, 0.28), greenMat);
+          const crossH = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.1, 0.28), greenMat);
+          mesh.add(box, handle, crossV, crossH);
+
         } else if (kind === "trophy") {
+          // Legendary Museum-Grade Golden Grail Chalice with Twin Curved Handles & Jeweled Rim
           colorHex = 0xffc43d;
           value = 500;
-          const cupMat = new THREE.MeshLambertMaterial({ color: 0xffc43d, emissive: 0x664400 });
-          const base = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.36, 0.25, 8), cupMat);
-          const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.35, 8), cupMat);
-          stem.position.y = 0.25;
-          const bowl = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.22, 0.45, 8), cupMat);
-          bowl.position.y = 0.58;
-          mesh = new THREE.Group();
-          mesh.add(base, stem, bowl);
+          const cupMat = new THREE.MeshStandardMaterial({
+            color: 0xffd166,
+            map: tex.gold,
+            bumpMap: tex.gold,
+            bumpScale: 0.02,
+            emissive: 0x78350f,
+            emissiveIntensity: 0.35,
+            roughness: 0.14,
+            metalness: 0.95
+          });
+          const gemMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
+
+          const plinth = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.4, 0.14, 16), cupMat);
+          plinth.position.y = -0.18;
+          const base = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.32, 0.18, 16), cupMat);
+          base.position.y = -0.02;
+          const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.11, 0.34, 14), cupMat);
+          stem.position.y = 0.22;
+          const bowlLower = new THREE.Mesh(new THREE.SphereGeometry(0.34, 16, 12), cupMat);
+          bowlLower.position.y = 0.54;
+          const bowlUpper = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.33, 0.34, 16), cupMat);
+          bowlUpper.position.y = 0.68;
+
+          // Twin Curved Chalice Handles
+          for (const side of [-1, 1]) {
+            const handle = new THREE.Mesh(new THREE.TorusGeometry(0.18, 0.036, 8, 16, Math.PI), cupMat);
+            handle.position.set(side * 0.32, 0.62, 0);
+            handle.rotation.z = side * -Math.PI / 2;
+            mesh.add(handle);
+          }
+
+          // Halo Ring around Trophy
+          const auraRing = new THREE.Mesh(
+            new THREE.TorusGeometry(0.55, 0.022, 8, 24),
+            gemMat
+          );
+          auraRing.rotation.x = Math.PI / 2;
+          auraRing.position.y = 0.5;
+
+          mesh.add(plinth, base, stem, bowlLower, bowlUpper, auraRing);
         }
+
+        // Fortnite Vertical Rarity Loot Beam & Ground Glow Ring
+        const beamMat = new THREE.MeshBasicMaterial({
+          color: colorHex,
+          transparent: true,
+          opacity: 0.28,
+          side: THREE.DoubleSide
+        });
+        const lootBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.42, 3.2, 12, 1, true), beamMat);
+        lootBeam.position.y = 1.1;
+        group.add(lootBeam);
 
         group.add(mesh);
         group.position.set(x, y + 0.65, z);
@@ -2965,16 +4052,29 @@
       }
 
       addCheckpoint(x, y, z) {
+        RealisticAssetFactory.init();
+        const stoneTex = this.getThemeStoneTexture();
         const group = new THREE.Group();
-        const pole = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.08, 0.08, 2.2, 6),
-          new THREE.MeshLambertMaterial({ color: 0xcbd5e1 })
-        );
-        pole.position.y = 1.1;
-        const flagMat = new THREE.MeshBasicMaterial({ color: 0xff3e4d, side: THREE.DoubleSide });
-        const flag = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.48, 0.08), flagMat);
-        flag.position.set(0.38, 1.85, 0);
-        group.add(pole, flag);
+
+        const stoneMat = new THREE.MeshStandardMaterial({
+          color: 0x94a3b8,
+          map: stoneTex,
+          bumpMap: stoneTex,
+          bumpScale: 0.03,
+          roughness: 0.7
+        });
+        const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.48, 0.45, 10), stoneMat);
+        pedestal.position.y = 0.22;
+        const obelisk = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.2, 1.5, 8), stoneMat);
+        obelisk.position.y = 1.15;
+        const brazier = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.14, 0.22, 10), stoneMat);
+        brazier.position.y = 1.95;
+
+        const flagMat = new THREE.MeshBasicMaterial({ color: 0xff3e4d });
+        const crystalOrb = new THREE.Mesh(new THREE.OctahedronGeometry(0.28, 1), flagMat);
+        crystalOrb.position.set(0, 2.32, 0);
+
+        group.add(pedestal, obelisk, brazier, crystalOrb);
         group.position.set(x, y, z);
         this.levelGroup.add(group);
 
@@ -2986,20 +4086,48 @@
       }
 
       addExitDoor(x, y, z) {
+        RealisticAssetFactory.init();
+        const stoneTex = this.getThemeStoneTexture();
+        const tex = RealisticAssetFactory.textures;
         const group = new THREE.Group();
-        const frameMat = new THREE.MeshLambertMaterial({ color: 0x64748b });
-        const leftPillar = new THREE.Mesh(new THREE.BoxGeometry(0.4, 2.8, 0.5), frameMat);
-        leftPillar.position.set(-1.1, 1.4, 0);
-        const rightPillar = leftPillar.clone();
-        rightPillar.position.x = 1.1;
-        const topArch = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.45, 0.55), frameMat);
-        topArch.position.set(0, 2.8, 0);
+
+        const frameMat = new THREE.MeshStandardMaterial({
+          color: 0x94a3b8,
+          map: stoneTex,
+          bumpMap: stoneTex,
+          bumpScale: 0.04,
+          roughness: 0.6,
+          metalness: 0.2
+        });
+        const goldMat = new THREE.MeshStandardMaterial({
+          color: 0xffc43d,
+          map: tex.gold,
+          roughness: 0.2,
+          metalness: 0.9
+        });
+
+        // Fluted Temple Columns & Pediment Archway
+        for (const side of [-1, 1]) {
+          const colBase = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.35, 0.72), frameMat);
+          colBase.position.set(side * 1.22, 0.17, 0);
+          const colShaft = new THREE.Mesh(new THREE.CylinderGeometry(0.26, 0.3, 2.7, 12), frameMat);
+          colShaft.position.set(side * 1.22, 1.55, 0);
+          const capital = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.26, 0.68), goldMat);
+          capital.position.set(side * 1.22, 2.88, 0);
+          group.add(colBase, colShaft, capital);
+        }
+
+        const lintel = new THREE.Mesh(new THREE.BoxGeometry(3.2, 0.45, 0.75), frameMat);
+        lintel.position.set(0, 3.18, 0);
+        const pediment = new THREE.Mesh(new THREE.ConeGeometry(1.85, 0.75, 4), goldMat);
+        pediment.rotation.y = Math.PI / 4;
+        pediment.position.set(0, 3.75, 0);
 
         const portalMat = new THREE.MeshBasicMaterial({ color: 0xff3e4d });
-        const portal = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.55, 0.22), portalMat);
-        portal.position.set(0, 1.3, 0);
+        const portal = new THREE.Mesh(new THREE.BoxGeometry(1.95, 2.75, 0.22), portalMat);
+        portal.position.set(0, 1.45, 0);
 
-        group.add(leftPillar, rightPillar, topArch, portal);
+        group.add(lintel, pediment, portal);
         group.position.set(x, y, z);
         this.levelGroup.add(group);
 
@@ -3011,6 +4139,11 @@
       }
 
       update(dt, elapsed) {
+        // Animate flowing molten lava / acid UV coordinates
+        for (let i = 0; i < this.lavaMaterials.length; i++) {
+          this.lavaMaterials[i].offset.x = (elapsed * 0.08) % 1;
+          this.lavaMaterials[i].offset.y = Math.sin(elapsed * 0.4) * 0.08;
+        }
         // Update moving platforms
         for (let i = 0; i < this.movingPlatforms.length; i++) {
           const mp = this.movingPlatforms[i];
@@ -3076,38 +4209,38 @@
         this.levelMetadata = {
           1: {
             title: "The Ancient Ruins",
-            skyColor: 0x16243b,
-            fogColor: 0x16243b,
+            skyColor: 0x1d4ed8,
+            fogColor: 0x3b82f6,
             music: "level1",
-            objective: "Seize the Golden Trophy in the Upper Ruins to unlock the Exit Door!"
+            objective: "Seize the Legendary Golden Trophy to unlock the Rift Exit!"
           },
           2: {
             title: "The Underground Caverns",
-            skyColor: 0x120d2b,
-            fogColor: 0x120d2b,
+            skyColor: 0x311068,
+            fogColor: 0x4c1d95,
             music: "level2",
-            objective: "Climb the Cavern Ladders, grab the Trophy, and reach the Exit Gate!"
+            objective: "Climb the Cavern Ladders, grab the Trophy, and reach the Rift Gate!"
           },
           3: {
             title: "The Treasure Dungeon",
-            skyColor: 0x0d1f1d,
-            fogColor: 0x0d1f1d,
+            skyColor: 0x064e3b,
+            fogColor: 0x047857,
             music: "level3",
-            objective: "Cross the Acid Vaults, collect the Dungeon Trophy, and escape!"
+            objective: "Cross the Slurp Acid Vaults, collect the Trophy, and escape!"
           },
           4: {
             title: "The Deadly Fortress",
-            skyColor: 0x260c15,
-            fogColor: 0x260c15,
+            skyColor: 0x4c0519,
+            fogColor: 0x881337,
             music: "level4",
             objective: "Survive the Spike Bridges, take the Fortress Trophy, and exit!"
           },
           5: {
             title: "The Final Temple",
-            skyColor: 0x1a0926,
-            fogColor: 0x1a0926,
+            skyColor: 0x2e1065,
+            fogColor: 0x581c87,
             music: "level5",
-            objective: "Defeat the Temple Guardian Overlord & claim the Grand Trophy!"
+            objective: "Defeat the Omega Mecha-Boss & claim the Victory Royale Trophy!"
           }
         };
       }
@@ -3129,7 +4262,8 @@
 
         const meta = this.levelMetadata[index];
         this.scene.background = new THREE.Color(meta.skyColor);
-        this.scene.fog = new THREE.FogExp2(meta.fogColor, 0.015);
+        this.scene.fog = new THREE.FogExp2(meta.fogColor, 0.012);
+        this.builder.buildLandscapeBackdrop(index);
 
         const enemyConfigs = [];
 
@@ -3489,6 +4623,107 @@
         this.hitMarkerTimeout = setTimeout(() => this.elHitMarker.classList.remove("active"), 130);
       }
 
+      spawnDamageNumber(worldPos, camera, damage, isFatal = false) {
+        const layer = document.getElementById("damage-numbers-layer");
+        if (!layer || !camera) return;
+        const proj = worldPos.clone();
+        proj.y += 1.4;
+        proj.project(camera);
+        if (proj.z > 1) return;
+        const x = (proj.x * 0.5 + 0.5) * window.innerWidth + (Math.random() - 0.5) * 32;
+        const y = (-proj.y * 0.5 + 0.5) * window.innerHeight;
+        const el = document.createElement("div");
+        el.className = `dmg-pop${isFatal ? " crit" : ""}`;
+        el.style.left = `${x}px`;
+        el.style.top = `${y}px`;
+        el.textContent = isFatal ? `💥 ${damage}!` : `${damage}`;
+        layer.appendChild(el);
+        setTimeout(() => {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        }, 760);
+      }
+
+      updateMinimap(player, cameraYaw, enemies, collectibles, exitDoor) {
+        const canvas = document.getElementById("fn-minimap-canvas");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        const w = canvas.width;
+        const h = canvas.height;
+        const cx = w / 2;
+        const cy = h / 2;
+        const scale = 2.1;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Radar grid & Storm circle ring
+        ctx.strokeStyle = "rgba(56, 189, 248, 0.22)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 24, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 46, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = "rgba(192, 132, 252, 0.75)";
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 52, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Draw collectibles (Cyan dots / Gold Trophy star)
+        for (let i = 0; i < collectibles.length; i++) {
+          const c = collectibles[i];
+          if (c.collected) continue;
+          const dx = (c.group.position.x - player.position.x) * scale;
+          const dz = (c.group.position.z - player.position.z) * scale;
+          if (Math.hypot(dx, dz) < 50) {
+            ctx.fillStyle = c.kind === "trophy" ? "#facc15" : "#38bdf8";
+            ctx.beginPath();
+            ctx.arc(cx + dx, cy + dz, c.kind === "trophy" ? 4.5 : 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Draw Exit Door Rift
+        if (exitDoor) {
+          const dx = (exitDoor.position.x - player.position.x) * scale;
+          const dz = (exitDoor.position.z - player.position.z) * scale;
+          const clampedDist = Math.min(48, Math.hypot(dx, dz));
+          const ang = Math.atan2(dz, dx);
+          ctx.fillStyle = exitDoor.unlocked ? "#22e58b" : "#f43f5e";
+          ctx.beginPath();
+          ctx.arc(cx + Math.cos(ang) * clampedDist, cy + Math.sin(ang) * clampedDist, 4.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw Enemy Bots (Red hostile pings)
+        for (let i = 0; i < enemies.length; i++) {
+          const e = enemies[i];
+          if (e.dead) continue;
+          const dx = (e.mesh.position.x - player.position.x) * scale;
+          const dz = (e.mesh.position.z - player.position.z) * scale;
+          if (Math.hypot(dx, dz) < 50) {
+            ctx.fillStyle = e.type === "boss" ? "#f97316" : "#ff3e4d";
+            ctx.beginPath();
+            ctx.arc(cx + dx, cy + dz, e.type === "boss" ? 5 : 3.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Player center directional pointer
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(-cameraYaw);
+        ctx.fillStyle = "#ffffff";
+        ctx.beginPath();
+        ctx.moveTo(0, -6);
+        ctx.lineTo(4.5, 5);
+        ctx.lineTo(0, 2.5);
+        ctx.lineTo(-4.5, 5);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
       renderMenuStats(levelMetadata, onSelectLevel) {
         document.getElementById("menu-high-score").textContent = `${this.saveManager.data.highScore}`;
         document.getElementById("menu-unlocked-count").textContent = `${this.saveManager.data.unlockedLevel} / 5`;
@@ -3576,15 +4811,33 @@
           this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2.0));
           this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-          this.scene = new THREE.Scene();
-          this.camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 140);
+          this.renderer.shadowMap.enabled = true;
+          this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+          this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          this.renderer.toneMappingExposure = 1.15;
 
-          const hemiLight = new THREE.HemisphereLight(0xffffff, 0x222840, 0.72);
+          this.scene = new THREE.Scene();
+          this.camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 160);
+
+          const hemiLight = new THREE.HemisphereLight(0xfff8e7, 0x1e293b, 0.82);
           this.scene.add(hemiLight);
 
-          const dirLight = new THREE.DirectionalLight(0xfff4d6, 0.85);
-          dirLight.position.set(18, 35, 22);
+          const dirLight = new THREE.DirectionalLight(0xfffaed, 1.15);
+          dirLight.position.set(22, 42, 24);
+          dirLight.castShadow = true;
+          dirLight.shadow.mapSize.width = 1024;
+          dirLight.shadow.mapSize.height = 1024;
+          dirLight.shadow.camera.near = 2;
+          dirLight.shadow.camera.far = 110;
+          dirLight.shadow.camera.left = -35;
+          dirLight.shadow.camera.right = 35;
+          dirLight.shadow.camera.top = 35;
+          dirLight.shadow.camera.bottom = -35;
           this.scene.add(dirLight);
+
+          const rimLight = new THREE.DirectionalLight(0x38bdf8, 0.45);
+          rimLight.position.set(-20, 18, -30);
+          this.scene.add(rimLight);
         } catch (err) {
           document.getElementById("webgl-error").style.display = "flex";
           throw err;
@@ -3881,14 +5134,15 @@
           this.audio.playMusic(meta.music);
         }
 
-        // Update projectiles
+        // Update projectiles & spawn Fortnite floating damage numbers
         this.projectiles.update(dt, this.player, this.levelManager.enemies, (hitEnemy) => {
           this.hud.triggerHitMarker();
+          this.hud.spawnDamageNumber(hitEnemy.mesh.position, this.camera, 25, hitEnemy.dead);
           if (hitEnemy.dead) {
             this.score += hitEnemy.scoreValue;
             this.levelScore += hitEnemy.scoreValue;
             if (hitEnemy.type === "boss") {
-              this.hud.showToast("TEMPLE GUARDIAN DEFEATED! GRAB THE TROPHY!");
+              this.hud.showToast("VICTORY ROYALE BOSS ELIMINATED! GRAB THE TROPHY!");
             }
           }
         });
@@ -3982,6 +5236,13 @@
           objText,
           canExit,
           boss
+        );
+        this.hud.updateMinimap(
+          this.player,
+          this.cameraController.yaw,
+          this.levelManager.enemies,
+          this.collision.collectibles,
+          door
         );
       }
 
