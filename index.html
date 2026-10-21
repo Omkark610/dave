@@ -987,6 +987,80 @@
         right: 12px;
       }
     }
+
+    /* ===== COMPACT MOBILE HUD (phones, portrait + landscape) ===== */
+    @media (max-width: 768px), (max-height: 500px) {
+      #hud-top-left {
+        top: calc(var(--safe-top) + 6px);
+        left: calc(var(--safe-left) + 6px);
+        max-width: min(215px, 44vw);
+        gap: 4px;
+      }
+      .hud-card {
+        padding: 4px 8px;
+        border-width: 1.5px;
+        border-radius: 8px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+      }
+      .level-badge-row { gap: 6px; margin-bottom: 3px; }
+      .level-tag { font-size: 8px; padding: 1px 5px; letter-spacing: 0.5px; border-radius: 4px; }
+      .level-name-text { font-size: 9.5px; }
+    
+      .bars-grid { gap: 3px; }
+      .bar-row { gap: 5px; }
+      .bar-label { font-size: 8px; width: 30px; letter-spacing: 0; }
+      .bar-track { height: 8px; border-width: 1px; }
+      .bar-value { font-size: 8.5px; min-width: 26px; }
+    
+      .stats-row {
+        gap: 8px;
+        margin-top: 3px;
+        padding-top: 3px;
+        font-size: 9px;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+      }
+      .stat-pill { gap: 2px; }
+      .lives-hearts { letter-spacing: 0; }
+    
+      #objective-card {
+        font-size: 9px;
+        gap: 5px;
+        padding: 3px 7px;
+        border-left-width: 3px;
+      }
+      #objective-icon { font-size: 10px; }
+      #objective-text {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    
+      /* Messages / toasts */
+      #toast-banner {
+        top: 13%;
+        font-size: 10.5px;
+        padding: 4px 12px;
+        border-width: 1.5px;
+        max-width: 72vw;
+        white-space: normal;
+        line-height: 1.25;
+      }
+      #interact-prompt { font-size: 11px; padding: 4px 10px; bottom: 30%; }
+    
+      /* Boss bar */
+      #boss-hud { top: calc(var(--safe-top) + 46px); width: min(300px, 56vw); padding: 4px 9px; border-width: 1.5px; }
+      .boss-header { font-size: 9px; margin-bottom: 3px; }
+      .boss-track { height: 8px; }
+    
+      /* Top-right utility buttons + minimap */
+      #top-utility-bar { top: calc(var(--safe-top) + 6px); right: calc(var(--safe-right) + 6px); gap: 5px; }
+      .icon-btn { min-width: 32px; height: 32px; padding: 0 8px; font-size: 11px; border-radius: 8px; }
+      #sound-label { display: none; }
+      #fn-minimap-wrap { top: calc(var(--safe-top) + 44px); right: calc(var(--safe-right) + 6px); width: 78px; height: 78px; }
+      .minimap-label { font-size: 7px; }
+    }
   </style>
 </head>
 <body>
